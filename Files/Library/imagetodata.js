@@ -28,6 +28,7 @@ function processim(imid, cnvid, x, y, w, h){
 	canvas.height = img.height;
 	var ctx = canvas.getContext('2d');
 	ctx.drawImage(img, 0, 0, img.width, img.height);
+	
 	var pixelData = ctx.getImageData(x, y, w, h).data;
 	var data = pixelData.toString();
 	var datalist = data.split(",");
@@ -50,6 +51,13 @@ function processim(imid, cnvid, x, y, w, h){
 }
 
 
+function new_sel_file(event){
+	onFileSelected(event);
+	//get_orig_dim();
+}
+
+
+
 //V https://stackoverflow.com/questions/3814231/loading-an-image-to-a-img-from-input-file V
 function onFileSelected(event) {
 	var selectedFile = event.target.files[0];
@@ -63,7 +71,58 @@ function onFileSelected(event) {
 	};
 
 	reader.readAsDataURL(selectedFile);
+	
+	
+	var div = document.getElementById("edit_buttons");
+	if(div.style.display == "none"){
+		div.style.display = "block";
+	}
+	
+	document.getElementById("input_image").style = "";
+	/*
+	imgtag.onload = function(event){
+		console.log(event);
+	}
+	*/
+	
+		/*
+		var img = document.getElementById("input_image");
+		var iw = img.width;
+		var ih = img.height;
+		var origdim = document.getElementById("orig_img_dim");
+		origdim.innerHTML = "Original Image Dimensions: " + iw.toString() + "x" + ih.toString() + " pixels";
+	}
+	*/
+	/*
+	var img = document.getElementById("input_image");
+	var iw = img.width;
+	var ih = img.height;
+	var origdim = document.getElementById("orig_img_dim");
+	origdim.innerHTML = "Original Image Dimensions: " + iw.toString() + "x" + ih.toString() + " pixels";
+	*/
 }
+//------------------------------------------------------------------------------------------
+
+function get_orig_dim(){
+	//console.log(event);
+	var img = document.getElementById("input_image");
+	var iw = img.width;
+	var ih = img.height;
+	var origdim = document.getElementById("orig_img_dim");
+	origdim.innerHTML = "Original Image Dimensions: " + iw.toString() + "x" + ih.toString() + " pixels";
+	
+	var width_box = document.getElementById("img_w");
+	var height_box = document.getElementById("img_h");
+	
+	width_box.value = iw.toString();
+	height_box.value = ih.toString();
+	
+	
+}
+
+
+
+
 
 
 function finalbuild(cnvid, tileset_imid, pdict, tileres){
@@ -81,6 +140,8 @@ function finalbuild(cnvid, tileset_imid, pdict, tileres){
 	canvas.height = height;
 	var ctx = canvas.getContext("2d");
 	
+	
+	
 	var img = document.getElementById('tileset');
 	var ts_width = img.width;
 	var ts_height = img.height;
@@ -93,6 +154,7 @@ function finalbuild(cnvid, tileset_imid, pdict, tileres){
 	
 	for(var row = 0; row < ih; row++){
 		for(var col = 0; col < iw; col++){
+			try{
 			var px = [finaldata.data[(row * iw + col) * 4], finaldata.data[(row * iw + col) * 4+1],finaldata.data[(row * iw + col) * 4+2]];//ctx.getImageData(col, row, 1, 1).data;
 			//console.log(finaldata.data);
 			//console.log(px);
@@ -102,6 +164,10 @@ function finalbuild(cnvid, tileset_imid, pdict, tileres){
 			//console.log(callnum);
 			var region = ts_ctx.getImageData((callnum-1)*tileres, 0, (callnum-1)*tileres+tileres, tileres);
 			ctx.putImageData(region, col*tileres, row*tileres);
+			}
+			catch(err){
+				
+			}
 		}
 	}
 	//ctx.putImageData(imagedata, 0, 0);

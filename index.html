@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>HermitTHC's Image To SMM2 Art (Beta)</title>
+<title>HermitTHC's Image To SMM2 Tile Art Generator</title>
 </head>
 <body>
-	<h1>HermitTHC's Image To SMM2 Art (Beta)</h1>
+	<h1>HermitTHC's Image To SMM2 Tile Art Generator</h1>
 	<div>
-		
+		<b>Made by HermitTHC (of course)</b> <i style="margin-left:20px">[ v1.0.0 ]</i> <br> <br>
 		<label for="myfile">Select an image file:</label>
-		<input type="file" id="myfile" name="myfile" onchange="onFileSelected(event)"> <br> <br>
+		<input type="file" id="myfile" name="myfile" onchange="onFileSelected(event)"> <br> <br> <!-- onFileSelected(event) -->
 		<!--
 		<label for="img_x">X:</label>
 		<input type="number" id="img_x" name="img_x" min="0"> 
 
 		<label for="img_x">Y:</label>
 		<input type="number" id="img_y" name="img_y" min="0"> <br> <br>
-		
-		<label for="img_x">Width:</label>
-		<input type="number" id="img_w" name="img_w" min="1">
-		
-		<label for="img_x">Height:</label>
-		<input type="number" id="img_h" name="img_h" min="1"> <br> <br>
 		-->
+	</div>
+	<div id="edit_buttons" style="display: none">
+		<div>
+			<label for="img_x">Width:</label>
+			<input type="number" id="img_w" name="img_w" min="1" value="0">
+			<button onclick="scale_width_from_height()">Scale Width based on Height and Apply to Image</button>
+		</div>
+		<div style="margin-top:5px">
+			<label for="img_x">Height:</label>
+			<input type="number" id="img_h" name="img_h" min="1" value="0">
+			<button onclick="scale_height_from_width()">Scale Height based on Width and Apply to Image</button>
+		</div>
+			
+		
+		<div style="margin-top:5px">
+			<button onclick="reset_img_dim()">Set Width and Height to Original Dimensions</button>
+		</div>
+		
+		<div style="margin-top:15px">
+			<button onclick="apply_dim_to_img()">Apply Width and Height to Input Image to preview Input Image</button>
+		</div>
+		
+		<div style="margin-top:25px">
+			<button onclick="build()">Generate SMM2 Tile Art</button>
+		</div>
 		
 	</div>
-	
+
 	<div>
-		<button onclick="build()">Generate Image</button>
-		<p>Note: Images that are over 400x400 pixels exponentially increase loading times, and are not recommended!</p>
+		<p id="orig_img_dim">Original Image Dimensions: </p>
+		<p style="margin-top:20px">Note: Images that are over 400x400 pixels exponentially increase processing/loading times, and are not recommended!</p>
 	</div>
 	
 	<div>
-		<p>_</p>
+		<p>Tileset:</p>
 		<img src="Files/Tileset/tileset.png" id="tileset">
 	</div>
 	
 	<div>
-		<canvas id="tileset_disp" width="10" height="10"></canvas>
+		<canvas id="tileset_disp" width="10" height="10" style="display: none;"></canvas>
 	</div>
 	
 	<div>
-		<img id="input_image">
+		<p>Input Image:</p>
+		<img id="input_image" onload="get_orig_dim()">
 	</div>
 	
 	
@@ -49,17 +69,19 @@
 	
 	<!--2-->
 	<div id="tempcnv">
-		<p>Output Image: </p>
+		<p>Output Image/SMM2 Tile Image: </p>
 		<canvas id="canv"></canvas>
 	</div>
+	<!--
 	<div id="paldisp">
 		<canvas id="palcanv"></canvas>
 	</div>
-	
+	-->
 	
 	<script src="Files/Library/build.js"></script>
 	<script src="Files/Library/imagetodata.js"></script>
 	<script src="Files/Library/createpalette2.js"></script>
 	<script src="Files/Library/dither.js"></script>
+	<script src="Files/Library/imagescale.js"></script>
 </html>
 

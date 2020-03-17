@@ -66,6 +66,15 @@ function dither(imgid, cnvid, palette){
 	
 	var ctx = canvas.getContext("2d");
 	
+	//V https://gist.github.com/redblobgames/d5d1e61c68e29bed96c8cb728db54f93 V
+	var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+	var pixels = imageData.data;
+	for (let i = 3, n = canvas.width * canvas.height * 4; i < n; i += 4) {
+		pixels[i] = 255;
+	}
+	ctx.putImageData(imageData, 0, 0);
+	//------------------------------------------------------------------------
+	
 	ctx.drawImage(img, 0, 0, img.width, img.height);
 	var impx = ctx.getImageData(0, 0, width, height); //Pixeldata
 	
@@ -98,7 +107,7 @@ function dither(imgid, cnvid, palette){
 	}
 	//imagedata.data = impx;
 	ctx.putImageData(impx, 0, 0);
-	console.log(impx);
+	//console.log(impx);
 	
 	
 	

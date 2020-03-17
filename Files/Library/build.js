@@ -1,4 +1,4 @@
-
+/*
 function get_d(){
 	//var canv = createcanvas("canv");
 	var x = parseInt(document.getElementById('img_x').value);
@@ -17,8 +17,10 @@ function get_d2(){
 	var temppal = find_closest_palette_color([1,2,9], pdata);
 	console.log(temppal);
 }
+*/
 
 function build(){
+	apply_dim_to_img();
 	//var pdata = createpalette()["pdata"];
 	//dither("input_image", "canv", pdata);
 	var pdata = createpalette()["pdata"];
