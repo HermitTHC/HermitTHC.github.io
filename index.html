@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HermitTHC's Image To SMM2 Art (Beta)</title>
+</head>
+<body>
+	<h1>HermitTHC's Image To SMM2 Art (Beta)</h1>
+	<div>
+		
+		<label for="myfile">Select an image file:</label>
+		<input type="file" id="myfile" name="myfile" onchange="onFileSelected(event)"> <br> <br>
+		<!--
+		<label for="img_x">X:</label>
+		<input type="number" id="img_x" name="img_x" min="0"> 
+
+		<label for="img_x">Y:</label>
+		<input type="number" id="img_y" name="img_y" min="0"> <br> <br>
+		
+		<label for="img_x">Width:</label>
+		<input type="number" id="img_w" name="img_w" min="1">
+		
+		<label for="img_x">Height:</label>
+		<input type="number" id="img_h" name="img_h" min="1"> <br> <br>
+		-->
+		
+	</div>
+	
+	<div>
+		<button onclick="build()">Generate Image</button>
+		<p>Note: Images that are over 400x400 pixels exponentially increase loading times, and are not recommended!</p>
+	</div>
+	
+	<div>
+		<p>_</p>
+		<img src="Files/Tileset/tileset.png" id="tileset">
+	</div>
+	
+	<div>
+		<canvas id="tileset_disp" width="10" height="10"></canvas>
+	</div>
+	
+	<div>
+		<img id="input_image">
+	</div>
+	
+	
+	<p id="out"></p>
+	<!--<canvas id="can_1"></canvas>-->
+	
+	<!--2-->
+	<div id="tempcnv">
+		<p>Output Image: </p>
+		<canvas id="canv"></canvas>
+	</div>
+	<div id="paldisp">
+		<canvas id="palcanv"></canvas>
+	</div>
+	
+	
+	<script src="Files/Library/build.js"></script>
+	<script src="Files/Library/imagetodata.js"></script>
+	<script src="Files/Library/createpalette2.js"></script>
+	<script src="Files/Library/dither.js"></script>
+</html>
+
