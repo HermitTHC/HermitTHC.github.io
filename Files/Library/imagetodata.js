@@ -175,5 +175,12 @@ function finalbuild(cnvid, tileset_imid, pdict, tileres){
 }
 
 
+//V https://davidwalsh.name/convert-canvas-image V
+function convertCanvasToImage(img, canvas) {
+	var image = img;//new Image();
+	image.src = canvas.toDataURL("image/png");
+	return image;
+}
+//------------------------------------------------
 
 

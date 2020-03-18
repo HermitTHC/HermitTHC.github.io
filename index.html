@@ -6,9 +6,9 @@
 <body>
 	<h1>HermitTHC's Image To SMM2 Tile Art Generator</h1>
 	<div>
-		<b>Made by HermitTHC (of course)</b> <i style="margin-left:20px">[ v1.0.0 ]</i> <br> <br>
+		<b>Made by HermitTHC (of course)</b> <i style="margin-left:20px">[ v1.0.1 ]</i> <br> <br>
 		<label for="myfile">Select an image file:</label>
-		<input type="file" id="myfile" name="myfile" onchange="onFileSelected(event)"> <br> <br> <!-- onFileSelected(event) -->
+		<input type="file" id="myfile" name="myfile" onchange="onFileSelected(event)"> <!--<br> <br>  onFileSelected(event) -->
 		<!--
 		<label for="img_x">X:</label>
 		<input type="number" id="img_x" name="img_x" min="0"> 
@@ -18,6 +18,12 @@
 		-->
 	</div>
 	<div id="edit_buttons" style="display: none">
+		<div>
+			<p id="orig_img_dim">Original Image Dimensions: </p>
+		</div>
+		<div style="margin-top:25px">
+			<p>Image Resizing Options:</p>
+		</div>
 		<div>
 			<label for="img_x">Width:</label>
 			<input type="number" id="img_w" name="img_w" min="1" value="0">
@@ -41,15 +47,18 @@
 		<div style="margin-top:25px">
 			<button onclick="build()">Generate SMM2 Tile Art</button>
 		</div>
-		
+		<div>
+			<p style="margin-top:20px">Note: Images that are over 300x300 pixels exponentially increase processing/loading times, and are not recommended!</p>
+		</div>
 	</div>
 
 	<div>
-		<p id="orig_img_dim">Original Image Dimensions: </p>
-		<p style="margin-top:20px">Note: Images that are over 400x400 pixels exponentially increase processing/loading times, and are not recommended!</p>
+		<!-- orig img dim
+		<p style="margin-top:20px">Note: Images that are over 300x300 pixels exponentially increase processing/loading times, and are not recommended!</p>
+		-->
 	</div>
 	
-	<div>
+	<div style="margin-top:25px">
 		<p>Tileset:</p>
 		<img src="Files/Tileset/tileset.png" id="tileset">
 	</div>
@@ -70,7 +79,8 @@
 	<!--2-->
 	<div id="tempcnv">
 		<p>Output Image/SMM2 Tile Image: </p>
-		<canvas id="canv"></canvas>
+		<canvas id="canv" style="display: none"></canvas>
+		<img id="imgg">
 	</div>
 	<!--
 	<div id="paldisp">

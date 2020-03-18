@@ -31,4 +31,9 @@ function build(){
 
 	finalbuild("canv", "tileset", pdict, 16);
 	
+	var canvas = document.getElementById("canv");
+	var img = document.getElementById("imgg");
+	img = convertCanvasToImage(img, canvas);
 }
+
+//Didn't have time to do anything with this, but h267 inspired me to get back into this project, so here credit in a random spot
