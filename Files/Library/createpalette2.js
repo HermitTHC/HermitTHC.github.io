@@ -6,11 +6,11 @@ const tileres = 16;
 
 function createpalette(){
 	var img = document.getElementById('tileset');
-	var ts_width = img.width;
-	var ts_height = img.height;
+	var ts_width = img.naturalWidth;
+	var ts_height = img.naturalHeight;
 	var tileamount = parseInt(ts_width/tileres);
 	
-	var ts_data = processim('tileset', 'canv', 0,0,img.width,img.height);
+	var ts_data = processim('tileset', 'canv', 0,0,img.naturalWidth,img.naturalHeight);
 	var palettedata = [];
 	var palettedict = {};
 	for(var tilenum = 1; tilenum <= tileamount; tilenum++){

@@ -24,10 +24,10 @@ function processim(imid, cnvid, x, y, w, h){
 	
 	var canvas = document.getElementById(cnvid); //document.getElementById(cnvid);//document.createElement('canvas');
 	
-	canvas.width = img.width;
-	canvas.height = img.height;
+	canvas.width = img.naturalWidth;
+	canvas.height = img.naturalHeight;
 	var ctx = canvas.getContext('2d');
-	ctx.drawImage(img, 0, 0, img.width, img.height);
+	ctx.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight);
 	
 	var pixelData = ctx.getImageData(x, y, w, h).data;
 	var data = pixelData.toString();
@@ -106,8 +106,8 @@ function onFileSelected(event) {
 function get_orig_dim(){
 	//console.log(event);
 	var img = document.getElementById("input_image");
-	var iw = img.width;
-	var ih = img.height;
+	var iw = img.naturalWidth;
+	var ih = img.naturalHeight;
 	var origdim = document.getElementById("orig_img_dim");
 	origdim.innerHTML = "Original Image Dimensions: " + iw.toString() + "x" + ih.toString() + " pixels";
 	
@@ -143,8 +143,8 @@ function finalbuild(cnvid, tileset_imid, pdict, tileres){
 	
 	
 	var img = document.getElementById('tileset');
-	var ts_width = img.width;
-	var ts_height = img.height;
+	var ts_width = img.naturalWidth;
+	var ts_height = img.naturalHeight;
 	
 	processim(tileset_imid, "tileset_disp", 0,0, ts_width, ts_height);
 	var tileset = document.getElementById("tileset_disp");
