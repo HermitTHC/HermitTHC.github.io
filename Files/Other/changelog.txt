@@ -1,6 +1,8 @@
 Changelog (I guess)
 
 
+v1.0.3 - removed April Fools Day joke
+
 v1.0.2.9.0.0.0.4.1.2.0.2.0 - made a tweak which possibly increased the speed of tile-art-creating process thanks to the user "tint" on Discord, added a warning to warn the user when their image probably should be resized to be smaller, and also added a temporary rickroll (Happy April Fools Day!)
 
 v1.0.2 - fixed the zoom glitch that caused errors or created incorrectly sized images/tile art when at a different zoom than 100% in browser (90%, 67%, etc.)
