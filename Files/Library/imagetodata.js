@@ -162,8 +162,9 @@ function finalbuild(cnvid, tileset_imid, pdict, tileres){
 			//px.pop();
 			var callnum = pdict[px];
 			//console.log(callnum);
-			var region = ts_ctx.getImageData((callnum-1)*tileres, 0, (callnum-1)*tileres+tileres, tileres);
-			ctx.putImageData(region, col*tileres, row*tileres);
+			//var region = ts_ctx.getImageData((callnum-1)*tileres, 0, (callnum-1)*tileres+tileres, tileres);
+			//ctx.putImageData(region, col*tileres, row*tileres);
+			ctx.drawImage(tileset, (callnum-1)*tileres,0,tileres,tileres, col*tileres,row*tileres,tileres,tileres); //Thanks tint!
 			}
 			catch(err){
 				

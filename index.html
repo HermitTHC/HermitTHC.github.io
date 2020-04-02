@@ -3,10 +3,11 @@
 <head>
 <title>HermitTHC's Image To SMM2 Tile Art Generator</title>
 </head>
+<link rel="stylesheet" type="text/css" href="style.css">
 <body>
 	<h1>HermitTHC's Image To SMM2 Tile Art Generator</h1>
 	<div>
-		<b>Made by HermitTHC (of course)</b> <i style="margin-left:20px">[ v1.0.2 ]</i> <br> <br>
+		<b>Made by HermitTHC (of course)</b> <i style="margin-left:20px">[ v1.0.2.9.0.0.0.4.1.2.0.2.0 ]</i> <br> <br>
 		<label for="myfile">Select an image file:</label>
 		<input type="file" id="myfile" name="myfile" onchange="onFileSelected(event)"> <!--<br> <br>  onFileSelected(event) -->
 		<!--
@@ -60,7 +61,23 @@
 	
 	<div style="margin-top:25px">
 		<p>Tileset:</p>
-		<img src="Files/Tileset/tileset.png" id="tileset">
+		<img src="Files/Tileset/SMB1Underground.png" id="tileset">
+		<div>
+			<select id="select_test" onchange="dropdown_change()">
+				<optgroup label="SMB1">
+					<option value="smb1_overworld">Overworld (Beta)</option>
+					<option value="smb1_sky">Sky (Beta)</option>
+					<option value="smb1_underground" selected="true">Underground (Recommended)</option>
+					<option value="smb1_forest">Forest (Beta)</option>
+					<option value="smb1_underwater">Underwater (Beta)</option>
+					<option value="smb1_ghosthouse">Ghost House (Beta)</option>
+					<option value="smb1_desert">Desert (Beta)</option>
+					<option value="smb1_airship">Airship (Beta)</option>
+					<option value="smb1_snow">Snow (Beta)</option>
+					<option value="smb1_castle">Castle (Beta)</option>
+				</optgroup>
+			</select>
+		</div>
 	</div>
 	
 	<div>
@@ -88,11 +105,47 @@
 	</div>
 	-->
 	
+	<div>
+		<button id="info_button" onclick="display_info()">HermitTHC's additional information (Click to show info)</button>
+		<div id="info_div" style="display: none; width: 50%" class="info">
+			
+			<!--
+			<div>
+				<p>Numbers and data: </p>
+				<ul style="list-style-type: square">
+					Horizontal Sub Area:
+					
+					<li>One "section" of a level</li>
+					
+					
+				</ul>
+				
+				</p>
+				
+			</div>
+		
+		
+		
+			<p>HermitTHC's SMM2 Maker ID: [GYM-CQ9-3DG] (free self promotion because why not)</p>
+			-->
+			<video id="temp" width="320" height="240" controls>
+				<source src="Files/Other/temp.mp4" type=video/mp4>
+			</video>
+			<p>Note from HermitTHC at 8:41PM, 4/1/2020: I apparently decided that I wanted to do something for 4/1/2020 with this tool at around 7PM today, so here's something I threw together. Enjoy! ;)   <br> (I also made a tweak or two to make the tool perform better)<br><b><a href="Files/Other/changelog.txt">Changelog</a></b></p>
+			
+		</div>
+	</div>
+	
+
+
+	
 	<script src="Files/Library/build.js"></script>
 	<script src="Files/Library/imagetodata.js"></script>
 	<script src="Files/Library/createpalette2.js"></script>
 	<script src="Files/Library/dither.js"></script>
 	<script src="Files/Library/imagescale.js"></script>
+	<script src="Files/Library/extrascript.js"></script>
+	<script src="Files/Library/dropdownscript.js"></script>
 </body>
 </html>
 

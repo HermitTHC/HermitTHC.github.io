@@ -1,0 +1,29 @@
+
+h1 {
+	color: black;
+	background-color: white;
+	margin-left: 20px;
+	border-style: solid;
+	border-width: 2px;
+}
+
+body {
+	background-color: white;
+}
+
+
+.info {
+	color: black;
+	border-style: solid;
+	border-width: 2px;
+	padding: 20px;
+}
+
+/*
+span.
+*/
+
+
+#select_test {
+	display: none;
+}
